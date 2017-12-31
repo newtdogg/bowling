@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="thermostat.js"></script>
+  <script src="jquery.min.js"></script>
+  <script src="thermostatjquery.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+<div id="body" class="container-fluid">
+  <div class="row">
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" >
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" align="center">
+      <h2>Funk-o-Therm</h2>
+      <h3>Temperature:</h3>
+      <h3><div id="temp">temp</div></h3>
+      <div><h3>Energy usage</h3></div><br>
+      <div id="usage" class="container usagebox"></div>
+      <div id="usagename">hi</div>
+      <button class="thermobuttons" onclick="increase()">+</button>
+      <button class="thermobuttons" onclick="decrease()"type="button">-</button>
+      <button class="thermobuttons" onclick="reset()" type="button">Reset</button>
+      <button id="usagebutton" class="thermobuttons" onclick="powerSave()" type="button">Power Save Mode</button>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
