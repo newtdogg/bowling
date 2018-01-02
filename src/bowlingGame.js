@@ -1,76 +1,27 @@
-const STARTING_TEMPERATURE = 20;
-const MIN_TEMP = 10;
-const MAX_TEMP_NO_PSM = 32;
-const MAX_TEMP_PSM = 25;
 
-
-function Thermostat(){
-  this.currentTemperature = STARTING_TEMPERATURE;
-  this.powersavingmode = true;
-  this.energyUsage = "Medium Energy Usage"
+function BowlingGame(){
+  this.rollscore = [[1, 2], [10], [6, 2], [7, 3], [5, 1], [10], [10], [6, 1], [1, 3], [8, 2, 4]]
+  this.framescore = [2, 10, 8, 10, 6, 10, 10, ]
 };
 
-Thermostat.prototype.increaseTemp = function() {
-  if(this.powersavingmode === true){
-    if(this.currentTemperature >= MAX_TEMP_PSM){
-      throw new Error("Maximum temperature is 25°C with Power Saving Mode on");
-    }
-  }
-  else {
-    if(this.currentTemperature >= MAX_TEMP_NO_PSM){
-      throw new Error("Maximum temperature is 32°C");
-    }
-  }
-  this.currentTemperature++
-  this._calculateEnergyUsage();
+BowlingGame.prototype.frameScore = function () {
+  var totalscore = 0;
+  for (var i = 0, len = this.score.length; i < len; i++) {
+    totalscore += this.score[i];
+  } // make this add up the
+  return totalscore
 };
 
-Thermostat.prototype.decreaseTemp = function() {
-  if(this.currentTemperature <= MIN_TEMP){
-    throw new Error("Minimum temperature is 10°C");
-  }
-  this.currentTemperature--
-  this._calculateEnergyUsage();
-};
-
-Thermostat.prototype.resetTemp = function() {
-  this.currentTemperature = STARTING_TEMPERATURE;
-};
-
-Thermostat.prototype.powerSavingSwitch = function() {
-  this.powersavingmode ? this.powersavingmode = false : this.powersavingmode = true
-};
-
-Thermostat.prototype._calculateEnergyUsage = function() {
-  switch (true) {
-    case (this.currentTemperature <= 18 ):
-      this.energyUsage = "Low Energy Usage";
-      break;
-    case (this.currentTemperature >= 26):
-        this.energyUsage = "High Energy Usage";
-        break;
-    default:
-      this.energyUsage = "Medium Energy Usage";
-  }
-};
-
-// Thermostat.prototype._calculateEnergyUsage = function() {
-//   switch (this.currentTemperature) {
-//     case (this.currentTemperature <= 18 ):
-//       this.energyUsage = "Low Energy Usage";
-//       break;
-//     case (this.currentTemperature >= 19 && this.currentTemperature <= 25 ):
+// BowlingGame.prototype.scoreCalculator = function(frame) {
+//   if(frame.isStrike() == true) {
+//     this.frameTotalPinsHit.push(frame.rollHolder[0].hitPins + frame.rollHolder[1].hitPins);
+//   }
+//   else if (frame.isSpare()) {
 //
-//     case (this.currentTemperature >= 26):
-//       this.energyUsage = "High Energy Usage";
-//       break;
+//   }
+//   else {
+//     this.frameTotalPinsHit.push(frame.rollHolder[0].hitPins + frame.rollHolder[1].hitPins);
+//     this.frameBonus.push(0);
+//     this.cumulativeScore = this.frameTotalPinsHit[this.frameTotalPinsHit.length-1] + this.cumulativeScore;
 //   }
 // };
-
-// if (this.currentTemperature <= 18 ){
-//   this.energyUsage = "Low Energy Usage";
-// } else if (this.currentTemperature >= 26) {
-//   this.energyUsage = "High Energy Usage";
-// } else {
-//   this.energyUsage = "Medium Energy Usage";
-// }
